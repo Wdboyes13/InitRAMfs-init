@@ -14,7 +14,7 @@ LICENSE - License blob
     INITRAMFS_ROOT/init
 
 
-|| Dependencies (included & statically linker) ||
+|| Dependencies (included & statically linked) ||
 
     libblkid
     libkmod
