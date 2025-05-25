@@ -41,6 +41,7 @@ When kernel is done, it automatically starts /init - This is that thing
 
     pkg.sh - For creating tar.gz & zip                     (Cause im not remembering the curse of .zip)
     autobuild.sh - Bash script for autorunning meson       (Cause im not type 3 words every 5 minutes)
+    git.sh - Git Automation - Called by above 2            (Cause if i accidentlly rm -rf . everythings safe)
 
     include/ - Headers for dependencies                    (So the compiler can be not stupid)
     lib/ - Static libraries for dependencies               (Cause static = more pain now less pain later)

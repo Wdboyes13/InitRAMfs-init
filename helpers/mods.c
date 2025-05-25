@@ -54,9 +54,10 @@ void mod(const char *name){
 void ldmods(){
     mod("/lib/modules/drivers/block/virtio_blk.ko");
 
-    mod("/lib/modules/drivers/net/virtio_net.ko");
+     mod("/lib/modules/net/core/net_failover.ko");
+    mod("/lib/modules/drivers/virtio/failover.ko");
 
-    mod("/lib/modules/net/core/net_failover.ko");
+    mod("/lib/modules/drivers/net/virtio_net.ko");
 
     mod("/lib/modules/drivers/net/ethernet/intel/e1000.ko");
     mod("/lib/modules/drivers/net/ethernet/intel/e100.ko");
@@ -80,13 +81,11 @@ void ldmods(){
     mod("/lib/modules/drivers/virtio/virtio_pci_legacy_dev.ko");
     mod("/lib/modules/drivers/virtio/virtio_pci_modern_dev.ko");
     mod("/lib/modules/drivers/virtio/virtio_pci.ko");
-    mod("/lib/modules/drivers/virtio/failover.ko");
 
-    mod("/lib/modules/fs/9p.ko");
     mod("/lib/modules/fs/bfs.ko");
-    mod("/lib/modules/fs/exfat.ko");
+
+    mod("/lib/modules/fs/mbcache.ko");
+    mod("/lib/modules/fs/jbd2.ko");
+    mod("/lib/modules/lib/crc16.ko");
     mod("/lib/modules/fs/ext4.ko");
-    mod("/lib/modules/fs/fat.ko");
-    mod("/lib/modules/fs/vfat.ko");
-    mod("/lib/modules/fs/msdos.ko");
 }
