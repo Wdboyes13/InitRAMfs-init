@@ -52,34 +52,41 @@ void mod(const char *name){
 }
 
 void ldmods(){
-    mod("/lib/modules/drivers/block/virtio_blk");
-    mod("/lib/modules/drivers/net/virtio_net");
-    mod("/lib/modules/net/core/net_failover");
-    mod("/lib/modules/drivers/net/ethernet/intel/e1000");
-    mod("/lib/modules/drivers/net/ethernet/intel/e100");
-    mod("/lib/modules/drivers/net/ethernet/intel/e1000e");
-    mod("/lib/modules/drivers/net/ethernet/intel/i40e");
-    mod("/lib/modules/drivers/net/ethernet/intel/iavf");
-    mod("/lib/modules/drivers/net/ethernet/intel/ice");
-    mod("/lib/modules/drivers/net/ethernet/intel/igb");
-    mod("/lib/modules/drivers/net/ethernet/intel/igbvf");
-    mod("/lib/modules/drivers/net/ethernet/intel/igc");
-    mod("/lib/modules/drivers/net/ethernet/intel/ixgbe");
-    mod("/lib/modules/drivers/net/ethernet/intel/ixgbevf");
-    mod("/lib/modules/drivers/net/ethernet/intel/libeth");
-    mod("/lib/modules/drivers/net/ethernet/intel/libie");
-    mod("/lib/modules/drivers/virtio/virtio_balloon");
-    mod("/lib/modules/drivers/virtio/virtio_dma_buf");
-    mod("/lib/modules/drivers/virtio/virtio_input");
-    mod("/lib/modules/drivers/virtio/virtio_mem");
-    mod("/lib/modules/drivers/virtio/virtio_mmio");
-    mod("/lib/modules/drivers/virtio/virtio_pci_legacy_dev");
-    mod("/lib/modules/drivers/virtio/virtio_pci_modern_dev");
-    mod("/lib/modules/drivers/virtio/virtio_pci");
-    mod("/lib/modules/drivers/virtio/failover");
-    mod("/lib/modules/fs/9p");
-    mod("/lib/modules/fs/bfs");
-    mod("/lib/modules/fs/exfat");
-    mod("/lib/modules/fs/ext4");
-    mod("/lib/modules/fs/fat");
+    mod("/lib/modules/drivers/block/virtio_blk.ko");
+
+    mod("/lib/modules/drivers/net/virtio_net.ko");
+
+    mod("/lib/modules/net/core/net_failover.ko");
+
+    mod("/lib/modules/drivers/net/ethernet/intel/e1000.ko");
+    mod("/lib/modules/drivers/net/ethernet/intel/e100.ko");
+    mod("/lib/modules/drivers/net/ethernet/intel/e1000e.ko");
+    mod("/lib/modules/drivers/net/ethernet/intel/i40e.ko");
+    mod("/lib/modules/drivers/net/ethernet/intel/iavf.ko");
+    mod("/lib/modules/drivers/net/ethernet/intel/ice.ko");
+    mod("/lib/modules/drivers/net/ethernet/intel/igb.ko");
+    mod("/lib/modules/drivers/net/ethernet/intel/igbvf.ko");
+    mod("/lib/modules/drivers/net/ethernet/intel/igc.ko");
+    mod("/lib/modules/drivers/net/ethernet/intel/ixgbe.ko");
+    mod("/lib/modules/drivers/net/ethernet/intel/ixgbevf.ko");
+    mod("/lib/modules/drivers/net/ethernet/intel/libeth.ko");
+    mod("/lib/modules/drivers/net/ethernet/intel/libie.ko");
+
+    mod("/lib/modules/drivers/virtio/virtio_balloon.ko");
+    mod("/lib/modules/drivers/virtio/virtio_dma_buf.ko");
+    mod("/lib/modules/drivers/virtio/virtio_input.ko");
+    mod("/lib/modules/drivers/virtio/virtio_mem.ko");
+    mod("/lib/modules/drivers/virtio/virtio_mmio.ko");
+    mod("/lib/modules/drivers/virtio/virtio_pci_legacy_dev.ko");
+    mod("/lib/modules/drivers/virtio/virtio_pci_modern_dev.ko");
+    mod("/lib/modules/drivers/virtio/virtio_pci.ko");
+    mod("/lib/modules/drivers/virtio/failover.ko");
+
+    mod("/lib/modules/fs/9p.ko");
+    mod("/lib/modules/fs/bfs.ko");
+    mod("/lib/modules/fs/exfat.ko");
+    mod("/lib/modules/fs/ext4.ko");
+    mod("/lib/modules/fs/fat.ko");
+    mod("/lib/modules/fs/vfat.ko");
+    mod("/lib/modules/fs/msdos.ko");
 }
