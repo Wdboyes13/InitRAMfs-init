@@ -1,4 +1,4 @@
-project('initramfs-init', 'c', version: '1.5.0')
+project('initramfs-init', 'c', version: '1.5.0', license: 'GPL-2.0')
 
 cc = meson.get_compiler('c')
 
