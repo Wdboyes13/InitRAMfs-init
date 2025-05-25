@@ -34,22 +34,22 @@ When kernel is done, it automatically starts /init - This is that thing
 
 || Source Layout ||
 
-    init.c - Main file                                          (The entry point (pain-t) )
-    helpers/sysmnt.c - Loads /proc /sys /dev /etc/fstab         (So the kernel has a safe space to yap)
-    helpers/mods.c - Loads kernel modules                       (So your wifi and disks work)
+    init.c - Main file                                     (The entry point (pain-t) )
+    helpers/sysmnt.c - Loads /proc /sys /dev /etc/fstab    (So the kernel has a safe space to yap)
+    helpers/mods.c - Loads kernel modules                  (So your wifi and disks work)
     helpers/fsld.c - Helpers for loading the main drive (/dev/vda) (Cause like, you kinda need a disk)
 
-    pkg.sh - For creating tar.gz & zip                          (Cause im not remembering the curse of .zip)
-    autobuild.sh - Bash script for autorunning meson            (Cause im not type 3 words every 5 minutes)
+    pkg.sh - For creating tar.gz & zip                     (Cause im not remembering the curse of .zip)
+    autobuild.sh - Bash script for autorunning meson       (Cause im not type 3 words every 5 minutes)
 
-    include/ - Headers for dependencies                         (So the compiler can be not stupid)
-    lib/ - Static libraries for dependencies                    (Cause static = more pain now less pain later)
-    arm-linux.cross - Cross-compiler target for Meson           (Cause mac)
-    meson.build - Meson build script                            (Cause its not 1995)
+    include/ - Headers for dependencies                    (So the compiler can be not stupid)
+    lib/ - Static libraries for dependencies               (Cause static = more pain now less pain later)
+    arm-linux.cross - Cross-compiler target for Meson      (Cause mac)
+    meson.build - Meson build script                       (Cause its not 1995)
     dist/ - If you used the script this is where meson installs (Cause meson doesnt know where you are in your filesystem) 
-    .gitignore - Git Ignore                                     (So you dont have to download 3 cache folders)
+    .gitignore - Git Ignore                                (So you dont have to download 3 cache folders)
 
-    README - This file                                          (If you didnt know the file your reading is the one displayed by github)
-    LICENSE - License blob                                      (So nobody misses the license)
-    LegalStuff - self-explanatory                               (So i dont get sued or have to sue someone :D)
-    GPLv2 - GPL version 2 text                                  (So your lawyer doesnt have to click more links)
+    README - This file                            (If you didnt know the file your reading is the one displayed by github)
+    LICENSE - License blob                                 (So nobody misses the license)
+    LegalStuff - self-explanatory                          (So i dont get sued or have to sue someone :D)
+    GPLv2 - GPL version 2 text                             (So your lawyer doesnt have to click more links)
