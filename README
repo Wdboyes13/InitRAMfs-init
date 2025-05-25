@@ -1,0 +1,48 @@
+-- A INITRAMFS Init Binary --
+
+--|| READ LegalStuff FILE FIRST ||--
+
+
+
+|| Legal Files ||
+GPLv2 - Full GPL version 2 text
+LegalStuff - General Legal Stuff
+LICENSE - License blob
+
+|| Where this goes ||
+
+    INITRAMFS_ROOT/init
+
+
+|| Dependencies (included & statically linker) ||
+
+    libblkid
+    libkmod
+
+
+|| What it does ||
+
+When kernel is done, it automatically starts /init - This is that thing
+
+1. Mounts /sys /proc /dev
+2. Loads /etc/fstab
+3. Loads kernel modules (Currently hardcoded)
+4. Prepares filesystem for /dev/vda
+5. Mounts /dev/vda if present and EXT4
+6. Execve's switch_root into /dev/vda and starts SystemD as PID 1
+
+
+|| Source Layout ||
+
+    init.c - Main file
+    helpers/sysmnt.c - Loads /proc /sys /dev /etc/fstab
+    helpers/mods.c - Loads kernel modules
+    helpers/fsld.c - Helpers for loading the main drive (/dev/vda)
+    pkg.sh - For creating tar.gz & zip
+    autobuild.sh - Bash script for autorunning meson 
+
+    include/ - Headers for dependencies                         (So the compiler can be not stupid)
+    lib/ - Static libraries for dependencies                    (Cause static = more pain now less pain later)
+    arm-linux.cross - Cross-compiler target for Meson           (Cause mac)
+    meson.build - Meson build script                            (Cause its not 1995)
+    dist/ - If you used the script this is where meson installs (Cause meson doesnt know where you are in your filesystem) 

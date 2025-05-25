@@ -1,0 +1,33 @@
+|| Dependencies ||
+Util-Linux --- Provided libblkid & Original switch_root.c + Dependent headers (include/utillinux/ excluding switch_root.h)
+KMod --- Provided libkmod
+Full sources of dependencies available in deps/
+
+|| Modifications ||
+Modified libkmod (KMod) to work statically - Available in deps/kmod.tar.xz
+Modified switch_root.c (Util-Linux) to have a wrapper function to allow calling 
+                    switch_root without the executable binary - Available in include/utillinux & deps/utillinux.tar.xz
+Modified c.h (Util-Linux) - To make the compiler be quiet - Also available in include/utillinux & deps/utillinux.tar.xz
+
+|| Dependency ORIGINAL Sources ||
+Util-linux - https://github.com/util-linux/util-linux - Licensed under GPL-2.0
+KMod - https://github.com/kmod-project/kmod - Licensed under LGPL-2.1
+
+
+|| License ||
+In compliance with the licenses of dependencies, This project is licensed under the GNU General Public License version 2.0
+The full license is available at - https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+Please see the file LICENSE for more information
+Full license at GPLv2
+
+|| Original Code ||
+init.c - Main file
+helpers/fsld.(c|h) - Loader for EXT4 filesystem
+helpers/mods.(c|h) - Kernel module loading
+helpers/sysmnt.(c|h) - Mounting for /etc/fstab /dev /proc /sysmnt
+
+include/utillinux/switch_root.h - Header file for modified switch_root.c
+
+meson.build - Build script
+pkg.sh - tar.xz and .zip packaging script
+autobuild.sh - Meson/Ninja running script
