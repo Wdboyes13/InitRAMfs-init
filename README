@@ -25,8 +25,8 @@ LICENSE - License blob
 When kernel is done, it automatically starts /init - This is that thing
 
 1. Mounts /sys /proc /dev
-2. Loads /etc/fstab
-3. Loads kernel modules (Currently hardcoded)
+2. Loads kernel modules (Currently hardcoded)
+3. Loads /etc/fstab
 4. Prepares filesystem for /dev/vda
 5. Mounts /dev/vda if present and EXT4
 6. Execve's switch_root into /dev/vda and starts SystemD as PID 1
