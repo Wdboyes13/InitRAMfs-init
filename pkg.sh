@@ -39,3 +39,4 @@ cp -r README include deps LICENSE LegalStuff lib \
 tar -cf - staging/ | xz -9 -c > $GZIPO
 zip -9r $ZIPO staging/
 rm -rf staging/
+./git.sh

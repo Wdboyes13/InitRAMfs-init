@@ -23,5 +23,5 @@ fi
 	
 ninja -C build
 ninja -C build install
-
+./git.sh
 exit 0
