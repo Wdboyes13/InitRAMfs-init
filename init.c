@@ -38,22 +38,37 @@ int main(){
 
     const char *mntdir = "/mnt/root";
     const char *dev = "/dev/vda";
-
-    syscall(SYS_mkdirat, AT_FDCWD, mntdir, mode);
-
-    if (!is_ext4(dev)){
-        printf("%s is not a valid EXT4 Drive\nFormatting now...\n", dev);
-        if (format_ext4(dev) != 0){
-            fprintf(stderr, "Formatting Failed!\n");
-            return 1;
+    int exists = 0;
+    FILE *vfile = fopen("/dev/vda", "r");
+    if (vfile) {
+        fclose(vfile);
+        exists = 1;
+    } else {
+        FILE *sfile = fopen("/dev/sda", "r");
+        if (sfile) {
+            exists = 1;
         }
     }
+    if (exists == 1){
+        syscall(SYS_mkdirat, AT_FDCWD, mntdir, mode);
 
-    if (mount_ext4(dev, mntdir) != 0) {
-        fprintf(stderr, "Mount /dev/vda failed\n");
+        if (!is_ext4(dev)){
+            printf("%s is not a valid EXT4 Drive\nFormatting now...\n", dev);
+            if (format_ext4(dev) != 0){
+                fprintf(stderr, "Formatting Failed!\n");
+                return 1;
+            }
+        }
+
+        if (mount_ext4(dev, mntdir) != 0) {
+            fprintf(stderr, "Mount /dev/vda failed\n");
+            return 1;
+        }
+
+        swrt_wrapper("/dev/vda", "/usr/lib/systemd/systemd");  
+    } else {
+        perror("Drive not found!!");
         return 1;
-    }
-
-    swrt_wrapper("/dev/vda", "/usr/lib/systemd/systemd");       
+    }     
   
 }
