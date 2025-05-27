@@ -48,7 +48,7 @@ int format_ext4(const char *device) {
 }
 
 int mount_ext4(const char *source, const char *target) {
-    if (mount(source, target, "ext4", 0, "defaults") !=0) {
+    if (mount(source, target, "ext4", 0, NULL) !=0) {
         perror("mount");
         return 1;
     }
