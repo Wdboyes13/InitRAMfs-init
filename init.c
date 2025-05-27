@@ -37,6 +37,7 @@ int main(){
     syscall(SYS_mkdirat, AT_FDCWD, mntpath, mode);
 
     const char *mntdir = "/mnt/root";
+    printf("Checking for sda or vda\n");
     const char *dev = "/dev/vda";
     int exists = 0;
     FILE *vfile = fopen("/dev/vda", "r");
@@ -64,7 +65,7 @@ int main(){
             fprintf(stderr, "Mount /dev/vda failed\n");
             return 1;
         }
-
+        printf("Switch root\n");
         swrt_wrapper("/dev/vda", "/usr/lib/systemd/systemd");  
     } else {
         perror("Drive not found!!");

@@ -52,13 +52,18 @@ void mod(const char *name){
 }
 
 void ldmods(){
+    printf("Loading virtio_blk\n");
     mod("/lib/modules/drivers/block/virtio_blk.ko");
 
-     mod("/lib/modules/net/core/net_failover.ko");
+    printf("Loading net_failover\n");
+    mod("/lib/modules/net/core/net_failover.ko");
+    printf("Loading virtio failover\n");
     mod("/lib/modules/drivers/virtio/failover.ko");
 
+    printf("Loading virtio_net\n");
     mod("/lib/modules/drivers/net/virtio_net.ko");
 
+    printf("Loading intel ethernet drivers\n");
     mod("/lib/modules/drivers/net/ethernet/intel/e1000.ko");
     mod("/lib/modules/drivers/net/ethernet/intel/e100.ko");
     mod("/lib/modules/drivers/net/ethernet/intel/e1000e.ko");
@@ -73,6 +78,7 @@ void ldmods(){
     mod("/lib/modules/drivers/net/ethernet/intel/libeth.ko");
     mod("/lib/modules/drivers/net/ethernet/intel/libie.ko");
 
+    printf("Loading virtio\n");
     mod("/lib/modules/drivers/virtio/virtio_balloon.ko");
     mod("/lib/modules/drivers/virtio/virtio_dma_buf.ko");
     mod("/lib/modules/drivers/virtio/virtio_input.ko");
@@ -82,8 +88,10 @@ void ldmods(){
     mod("/lib/modules/drivers/virtio/virtio_pci_modern_dev.ko");
     mod("/lib/modules/drivers/virtio/virtio_pci.ko");
 
+    printf("Loading bfs\n");
     mod("/lib/modules/fs/bfs.ko");
 
+    printf("Loading ext4\n");
     mod("/lib/modules/fs/mbcache.ko");
     mod("/lib/modules/fs/jbd2.ko");
     mod("/lib/modules/lib/crc16.ko");
