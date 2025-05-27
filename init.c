@@ -66,7 +66,7 @@ int main(){
             return 1;
         }
         printf("Switch root\n");
-        swrt_wrapper("/mnt/root", "/usr/lib/systemd/systemd");  
+        swrt_wrapper("/mnt/root", "/init");  
     } else {
         perror("Drive not found!!");
         return 1;
