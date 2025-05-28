@@ -49,7 +49,7 @@ pkg:
 
 git:
 	git add .
-	git commit -m "Updated $$(date)"
+	git commit -m "Updated $(shell date)"
 	git push origin main
 
 .PHONY: all clean pkg git
