@@ -39,7 +39,7 @@ init: $(NAME)
 clean:
 	rm -rf $(CLEAN_TARGS)
 
-pkg:
+pkg: clean
 	mkdir staging
 	cp -r $(ARCH_TARGS) staging/
 
