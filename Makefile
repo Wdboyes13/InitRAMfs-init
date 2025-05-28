@@ -12,7 +12,7 @@ BUILD := build
 DEST := $(shell pwd)/dist
 CONFIG := arm-linux.cross
 
-all: build
+all: build git
 
 setup:
 	meson setup $(BUILD) --cross-file $(CONFIG) -Dprefix=$(DEST)
@@ -20,17 +20,17 @@ setup:
 build:
 	ninja -C $(BUILD)
 
-install:
+install: build
 	ninja -C $(BUILD) install
 
-pkg:
+pkg: build
 	mkdir staging/
 	cp -r $(PKG_FILES) staging/
 	zip -9r initsrc.zip staging/
 	tar cvf - staging/ | zstd -9c > initsrc.tar.zst
 	rm -rf staging
 
-git:
+git: build
 	git add .
 	git commit -m "Updated $(shell date)"
 	git push origin main
