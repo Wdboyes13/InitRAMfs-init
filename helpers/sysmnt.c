@@ -22,6 +22,7 @@ along with this program; if not, see
 #include <stdlib.h>
 #include <errno.h>
 #include <string.h>
+#include <pthread.h>
 
 
 int already_mounted(const char *target) {
@@ -86,13 +87,7 @@ int ldfstab() {
     return 0;
 }
 
-void mntall() {
-    // Load proc first, always
-    printf("[init] Loading proc\n");
-    if (mount("proc", "/proc", "proc", 0, NULL) < 0)
-        perror("mount /proc");
-
-    // Now you can safely call already_mounted
+void ldsys() {
     if (!already_mounted("/sys")) {
         printf("[init] Loading sys\n");
         if (mount("sysfs", "/sys", "sysfs", 0, NULL) < 0)
@@ -100,7 +95,9 @@ void mntall() {
     } else {
         printf("[init] sys already mounted\n");
     }
+}
 
+void lddev() {
     if (!already_mounted("/dev")) {
         printf("[init] Loading devtmpfs\n");
         if (mount("devtmpfs", "/dev", "devtmpfs", 0, NULL) < 0)
@@ -108,5 +105,21 @@ void mntall() {
     } else {
         printf("[init] dev already mounted\n");
     }
+}
 
+void mntall() {
+    // Load proc first, always
+    printf("[init] Loading proc\n");
+    if (mount("proc", "/proc", "proc", 0, NULL) < 0)
+        perror("mount /proc");
+
+
+    // Now you can safely call already_mounted
+    pthread_t ldsys_t, lddev_t;
+
+    pthread_create(&ldsys_t, NULL, ldsys, NULL);
+    pthread_create(&lddev_t, NULL, lddev, NULL);
+
+    pthread_join(ldsys_t, NULL);
+    pthread_join(lddev_t, NULL);
 }

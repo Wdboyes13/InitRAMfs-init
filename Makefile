@@ -17,6 +17,12 @@ all: build git
 setup:
 	meson setup $(BUILD) --cross-file $(CONFIG) -Dprefix=$(DEST)
 
+setup-cmake:
+	if [ -d $(BUILD) ]; then rm -rf $(BUILD); fi; \
+	mkdir $(BUILD); \
+	cd $(BUILD); \
+	cmake .. -G Ninja -DCMAKE_TOOLCHAIN_FILE=../linux-aarch.cmake
+
 build:
 	ninja -C $(BUILD)
 

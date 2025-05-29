@@ -20,6 +20,7 @@ srcs = files('init.c') + helpers + unc_inc_srcs
 deps = [
   cc.find_library('blkid', required: true, dirs: libdir),
   cc.find_library('kmod', required: true, dirs: libdir),
+  cc.find_library('pthread', required: true, dirs: libdir),
 ]
 
 # Build target

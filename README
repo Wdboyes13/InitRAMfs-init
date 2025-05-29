@@ -18,7 +18,7 @@ LICENSE - License blob
 
     libblkid
     libkmod
-
+    libpthread
 
 || What it does ||
 
@@ -49,6 +49,8 @@ When kernel is done, it automatically starts /init - This is that thing
     meson.build - Meson build script                       (Cause its not 1995)
     dist/ - If you used the script this is where meson installs (Cause meson doesnt know where you are in your filesystem) 
     .gitignore - Git Ignore                                (So you dont have to download 3 cache folders)
+    CMakeLists.txt                                         (A whole lotta sadness so CLion doesnt hate me)
+    Makefile                                               (A Wrapper around the other 2 build systems)
 
     README - This file                            (If you didnt know the file your reading is the one displayed by github)
     LICENSE - License blob                                 (So nobody misses the license)

@@ -2,3 +2,5 @@ build
 .vscode
 .cache
 **/.DS_Store
+buildDir
+.idea

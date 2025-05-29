@@ -19,9 +19,10 @@ along with this program; if not, see
 #include <libkmod.h>
 #include <stdio.h>
 #include <string.h>
+#include <pthread.h>
 
 void mod(const char *name){
-        struct kmod_ctx *ctx;
+    struct kmod_ctx *ctx;
     struct kmod_module *mod;
     int err;
 
@@ -51,18 +52,17 @@ void mod(const char *name){
     kmod_unref(ctx);
 }
 
-void ldmods(){
+void* ldvirtio_1() {
     printf("Loading virtio_blk\n");
     mod("/lib/modules/drivers/block/virtio_blk.ko");
-
     printf("Loading net_failover\n");
     mod("/lib/modules/net/core/net_failover.ko");
     printf("Loading virtio failover\n");
     mod("/lib/modules/drivers/virtio/failover.ko");
-
     printf("Loading virtio_net\n");
     mod("/lib/modules/drivers/net/virtio_net.ko");
-
+}
+void* ldintel() {
     printf("Loading intel ethernet drivers\n");
     mod("/lib/modules/drivers/net/ethernet/intel/e1000.ko");
     mod("/lib/modules/drivers/net/ethernet/intel/e100.ko");
@@ -77,7 +77,8 @@ void ldmods(){
     mod("/lib/modules/drivers/net/ethernet/intel/ixgbevf.ko");
     mod("/lib/modules/drivers/net/ethernet/intel/libeth.ko");
     mod("/lib/modules/drivers/net/ethernet/intel/libie.ko");
-
+}
+void* ldvirtio_2() {
     printf("Loading virtio\n");
     mod("/lib/modules/drivers/virtio/virtio_balloon.ko");
     mod("/lib/modules/drivers/virtio/virtio_dma_buf.ko");
@@ -87,7 +88,9 @@ void ldmods(){
     mod("/lib/modules/drivers/virtio/virtio_pci_legacy_dev.ko");
     mod("/lib/modules/drivers/virtio/virtio_pci_modern_dev.ko");
     mod("/lib/modules/drivers/virtio/virtio_pci.ko");
+}
 
+void* ldfss() {
     printf("Loading bfs\n");
     mod("/lib/modules/fs/bfs.ko");
 
@@ -96,4 +99,17 @@ void ldmods(){
     mod("/lib/modules/fs/jbd2.ko");
     mod("/lib/modules/lib/crc16.ko");
     mod("/lib/modules/fs/ext4.ko");
+}
+void ldmods(){
+    pthread_t ldvirtio_1_t, ldintel_1_t, ldvirtio_2_t, ldfss_1_t;
+
+    pthread_create(&ldvirtio_1_t, NULL, ldvirtio_1, NULL);
+    pthread_create(&ldintel_1_t, NULL, ldintel, NULL);
+    pthread_create(&ldvirtio_2_t, NULL, ldvirtio_2, NULL);
+    pthread_create(&ldfss_1_t, NULL, ldfss, NULL);
+
+    pthread_join(ldvirtio_1_t, NULL);
+    pthread_join(ldintel_1_t, NULL);
+    pthread_join(ldvirtio_2_t, NULL);
+    pthread_join(ldfss_1_t, NULL);
 }

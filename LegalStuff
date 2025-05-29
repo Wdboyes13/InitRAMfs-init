@@ -1,7 +1,8 @@
 || Dependencies ||
 Util-Linux --- Provided libblkid & Original switch_root.c + Dependent headers (include/utillinux/ excluding switch_root.h)
 KMod --- Provided libkmod
-Full sources of dependencies available in deps/
+GLibC - Provided libpthread
+Full sources of dependencies available in deps/ as XZ Compressed Tars
 
 || Modifications ||
 Modified libkmod (KMod) to work statically - Available in deps/kmod.tar.xz
@@ -12,7 +13,7 @@ Modified c.h (Util-Linux) - To make the compiler be quiet - Also available in in
 || Dependency ORIGINAL Sources ||
 Util-linux - https://github.com/util-linux/util-linux - Licensed under GPL-2.0
 KMod - https://github.com/kmod-project/kmod - Licensed under LGPL-2.1
-
+GLibC - https://ftp.gnu.org/gnu/glibc/ - Licensed under LGPL-2.1
 
 || License ||
 In compliance with the licenses of dependencies, This project is licensed under the GNU General Public License version 2.0
@@ -29,5 +30,10 @@ helpers/sysmnt.(c|h) - Mounting for /etc/fstab /dev /proc /sysmnt
 include/utillinux/switch_root.h - Header file for modified switch_root.c
 
 meson.build - Build script
-pkg.sh - tar.xz and .zip packaging script
-autobuild.sh - Meson/Ninja running script
+Makefile - Build Automation
+linux-aarch.cmake - CMake Cross Config
+arm-linux.cross - Meson Cross Config
+CMakeLists.txt - CMake stuff
+
+README - Project info
+LegalStuff - Legal stuff i wrote so i dont get sued
