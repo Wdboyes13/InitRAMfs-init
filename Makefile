@@ -33,10 +33,10 @@ pkg: build
 	mkdir staging/
 	cp -r $(PKG_FILES) staging/
 	zip -9r initsrc.zip staging/
-	tar cvf - staging/ | zstd -9c > initsrc.tar.zst
+	tar cvf - staging/ | zstd -T0 -9c > initsrc.tar.zst
 	rm -rf staging
 
-git: build
+git:
 	git add .
 	git commit -m "Updated $(shell date)"
 	git push origin main
