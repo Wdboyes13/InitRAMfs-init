@@ -52,7 +52,7 @@ void mod(const char *name){
     kmod_unref(ctx);
 }
 
-void* ldvirtio_1() {
+void ldvirtio_1() {
     printf("Loading virtio_blk\n");
     mod("/lib/modules/drivers/block/virtio_blk.ko");
     printf("Loading net_failover\n");
@@ -62,7 +62,7 @@ void* ldvirtio_1() {
     printf("Loading virtio_net\n");
     mod("/lib/modules/drivers/net/virtio_net.ko");
 }
-void* ldintel() {
+void ldintel() {
     printf("Loading intel ethernet drivers\n");
     mod("/lib/modules/drivers/net/ethernet/intel/e1000.ko");
     mod("/lib/modules/drivers/net/ethernet/intel/e100.ko");
@@ -78,7 +78,7 @@ void* ldintel() {
     mod("/lib/modules/drivers/net/ethernet/intel/libeth.ko");
     mod("/lib/modules/drivers/net/ethernet/intel/libie.ko");
 }
-void* ldvirtio_2() {
+void ldvirtio_2() {
     printf("Loading virtio\n");
     mod("/lib/modules/drivers/virtio/virtio_balloon.ko");
     mod("/lib/modules/drivers/virtio/virtio_dma_buf.ko");
@@ -90,7 +90,7 @@ void* ldvirtio_2() {
     mod("/lib/modules/drivers/virtio/virtio_pci.ko");
 }
 
-void* ldfss() {
+void ldfss() {
     printf("Loading bfs\n");
     mod("/lib/modules/fs/bfs.ko");
 
