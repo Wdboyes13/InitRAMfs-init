@@ -61,6 +61,7 @@ void* ldvirtio_1(void* arg) {
     mod("/lib/modules/drivers/virtio/failover.ko");
     printf("Loading virtio_net\n");
     mod("/lib/modules/drivers/net/virtio_net.ko");
+    return NULL;
 }
 void* ldintel(void* arg) {
     printf("Loading intel ethernet drivers\n");
@@ -77,6 +78,7 @@ void* ldintel(void* arg) {
     mod("/lib/modules/drivers/net/ethernet/intel/ixgbevf.ko");
     mod("/lib/modules/drivers/net/ethernet/intel/libeth.ko");
     mod("/lib/modules/drivers/net/ethernet/intel/libie.ko");
+    return NULL;
 }
 void* ldvirtio_2(void* arg) {
     printf("Loading virtio\n");
@@ -88,6 +90,7 @@ void* ldvirtio_2(void* arg) {
     mod("/lib/modules/drivers/virtio/virtio_pci_legacy_dev.ko");
     mod("/lib/modules/drivers/virtio/virtio_pci_modern_dev.ko");
     mod("/lib/modules/drivers/virtio/virtio_pci.ko");
+    return NULL;
 }
 
 void* ldfss(void* arg) {
@@ -99,6 +102,7 @@ void* ldfss(void* arg) {
     mod("/lib/modules/fs/jbd2.ko");
     mod("/lib/modules/lib/crc16.ko");
     mod("/lib/modules/fs/ext4.ko");
+    return NULL;
 }
 void ldmods(){
     pthread_t ldvirtio_1_t, ldintel_1_t, ldvirtio_2_t, ldfss_1_t;
