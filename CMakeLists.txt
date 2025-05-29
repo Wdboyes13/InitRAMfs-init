@@ -25,10 +25,3 @@ add_executable(init.uns ${SRCS})
 
 # Link required libs
 target_link_libraries(init.uns blkid kmod pthread)
-
-# Strip the final binary
-add_custom_command(
-        TARGET init.uns POST_BUILD
-        COMMAND ${CMAKE_STRIP} -o ${CMAKE_BINARY_DIR}/init $<TARGET_FILE:init.uns>
-        COMMENT "Stripping binary to produce final 'init'"
-)

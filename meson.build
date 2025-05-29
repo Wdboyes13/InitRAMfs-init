@@ -33,13 +33,3 @@ exe = executable(
   dependencies: deps,
   install: false
 )
-
-# Strip it
-custom_target(
-  'stripped-init',
-  input: exe,
-  output: 'init',
-  command: [find_program('strip'), '-o', '@OUTPUT@', '@INPUT@'],
-  install: true,
-  install_dir: join_paths(get_option('prefix'), '')
-)

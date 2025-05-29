@@ -11,6 +11,7 @@ PKG_FILES := \
 BUILD := build
 DEST := $(shell pwd)/dist
 CONFIG := arm-linux.cross
+STRIPPER := aarch64-unknown-linux-gnu-strip
 
 all: build git
 
@@ -25,9 +26,12 @@ setup-cmake:
 
 build:
 	ninja -C $(BUILD)
+	cd $(BUILD)
+	$(STRIPPER) init.uns -o init
 
 install: build
-	ninja -C $(BUILD) install
+	cd $(BUILD)
+	cp init $(DEST)
 
 pkg: build
 	mkdir staging/
