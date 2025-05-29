@@ -27,7 +27,7 @@ setup-cmake:
 build:
 	ninja -C $(BUILD)
 	cd $(BUILD)
-	$(STRIPPER) init.uns -o init
+	$(STRIPPER) main -o init
 
 install: build
 	cd $(BUILD)

@@ -25,7 +25,7 @@ deps = [
 
 # Build target
 exe = executable(
-  'init.uns',
+  'init',
   srcs,
   include_directories: inc_dirs,
   c_args: ['-static', '-fno-pie', '-O2'],

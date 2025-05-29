@@ -21,7 +21,7 @@ set(SRCS
 link_directories(${CMAKE_SOURCE_DIR}/lib)
 
 # Add executable
-add_executable(init.uns ${SRCS})
+add_executable(main ${SRCS})
 
 # Link required libs
-target_link_libraries(init.uns blkid kmod pthread)
+target_link_libraries(init blkid kmod pthread)
