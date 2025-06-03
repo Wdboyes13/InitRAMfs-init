@@ -22,7 +22,8 @@ LICENSE - License blob
 
 || What it does ||
 
-When kernel is done, it automatically starts /init - This is that thing
+The linux kernel automatically starts /init as PID 1, thats what this is. It's meant to setup the most important stuff  
+For an OS to function, this is what this is.
 
 1. Mounts /sys /proc /dev - Multithreaded
 2. Loads kernel modules (Currently hardcoded) - Multithreaded
